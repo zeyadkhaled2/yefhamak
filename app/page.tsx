@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowLeft, ArrowUpRight, Bot, Check, ChevronDown, CircleCheck, Menu, MessageCircle, PackageCheck, Phone, Send, Sparkles, X } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Bot, Check, ChevronDown, Menu, MessageCircle, Send, Sparkles, X } from 'lucide-react'
+import { copy } from '@/lib/dictionary'
 
-const copy = {
+/* const copy = {
   ar: {
     nav: ['المميزات', 'إزاي بيشتغل', 'الأسعار', 'الأسئلة الشائعة'],
     waitlist: 'انضم لقائمة الانتظار',
@@ -34,6 +35,7 @@ const copy = {
     nav: ['Features', 'How it works', 'Pricing', 'FAQ'], waitlist: 'Join the waitlist', heroEyebrow: 'Your sales assistant that never sleeps', heroTitle: 'Every question answered, even at 2 AM.', heroText: 'Yefhamak replies to customers on WhatsApp and Instagram in Egyptian Arabic, takes their orders, and sends them to you 24/7.', whatsapp: 'Chat with us on WhatsApp', problemEyebrow: 'The messages never stop', problemTitle: 'Every missed message is a missed opportunity', problems: ['Customers message at night and get no reply', 'You answer the same questions 50 times a day', 'Orders get lost in long chats'], featureEyebrow: 'Built to understand', featureTitle: 'More than an auto-reply', features: [['Understands Egyptian Arabic & Franco', 'It speaks like your customers do, naturally and without sounding robotic.', MessageCircle], ['Knows your real products', 'Prices, sizes, and live stock — so every answer is accurate.', PackageCheck], ['Collects complete orders', 'Name, address, and phone in a few simple steps.', Phone], ['Hands off when unsure', 'When it is not certain, it brings you into the conversation.', CircleCheck]], howEyebrow: 'Start in 3 steps', howTitle: 'Leave the heavy lifting to us', steps: [['Connect your page', 'Link your WhatsApp number or Instagram page.'], ['Add your products', 'Upload them in a simple sheet — no complex setup.'], ['Watch orders arrive', 'Start receiving orders while you sleep.']], pricingEyebrow: 'Simple pricing', pricingTitle: 'Choose what fits your shop', starter: 'Starter', growth: 'Growth', from: 'From', month: 'EGP / month', talk: 'Talk to us first', ctaTitle: 'Ready to stop drowning in messages?', ctaText: 'Leave your details and we will reach out when sign-ups open.', phonePlaceholder: 'Email or phone number', faqEyebrow: 'Frequently asked', faqTitle: 'Want to know more?', faqs: [['Does it work with Instagram and WhatsApp?', 'Yes. Yefhamak works across both channels while keeping the experience natural for your customers.'], ['Will customers know they are talking to a bot?', 'The experience is designed to be natural and transparent. You can take over any conversation at any time.'], ['Can I edit my products myself?', 'Absolutely. Update products, prices, and stock from a simple sheet whenever you need.'], ['What happens if the bot does not know an answer?', 'It never guesses. It hands the conversation over to you right away.']], footer: 'The sales assistant that understands you and your customers.', copyright: '© 2025 Yefhamak. All rights reserved.'
   }
 }
+*/
 
 export default function Home() {
   const [lang, setLang] = useState<'ar' | 'en'>('ar')
