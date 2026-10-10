@@ -13,7 +13,6 @@ type Values = {
   phone: string;
   company: string;
   message: string;
-  website: string;
 };
 
 export function ContactForm({ language }: { language: ContactLanguage }) {
@@ -40,7 +39,6 @@ export function ContactForm({ language }: { language: ContactLanguage }) {
       ),
     company: Yup.string().trim().max(100, t.companyLength),
     message: Yup.string().max(1000, t.messageLength),
-    website: Yup.string(),
   }).test("contact", t.contactRequired, (values) =>
     Boolean(values.email?.trim() || values.phone?.trim()),
   );
@@ -53,7 +51,6 @@ export function ContactForm({ language }: { language: ContactLanguage }) {
       phone: "",
       company: "",
       message: "",
-      website: "",
     },
     validationSchema: schema,
     onSubmit: async (values, helpers) => {
@@ -87,17 +84,6 @@ export function ContactForm({ language }: { language: ContactLanguage }) {
       noValidate
       className="rounded-3xl border border-[#142B3B]/10 bg-white p-6 shadow-[0_24px_70px_rgba(20,43,59,0.08)] sm:p-9"
     >
-      <div className="sr-only">
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          aria-hidden="true"
-          {...formik.getFieldProps("website")}
-        />
-      </div>
       <div className="grid gap-5 sm:grid-cols-2">
         {(
           [
