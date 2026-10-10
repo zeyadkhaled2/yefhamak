@@ -15,4 +15,29 @@ const copy = {
 
 export { copy }
 
+export const businessPlan = {
+  ar: {
+    plans: [
+      { name: 'البداية', price: '999', replies: 'حتى 1,000 رد AI شهريًا', surplus: '217', features: ['رقم واتساب واحد', 'إعداد مُدار', 'أسئلة العملاء المعتادة', 'سجل محادثات أساسي', 'تحويل المحادثة لك'] },
+      { name: 'النمو', price: '1,999', replies: 'حتى 3,000 رد AI شهريًا', surplus: '927', features: ['كل مميزات البداية', 'قاعدة معرفة أكبر', 'تقارير استخدام', 'دعم موسّع'] },
+      { name: 'المحترف', price: '3,999', replies: 'حتى 8,000 رد AI شهريًا', surplus: '2,367', features: ['كل مميزات النمو', 'تحكم متقدم في سير العمل', 'تقارير أكثر تفصيلًا', 'دعم بأولوية'] },
+    ],
+    note: 'أسعار الإطلاق لا تزال قيد الاختبار وليست سعرًا سوقيًا مُثبتًا.',
+    trial: 'التجربة الأولى', trialText: '14 يومًا بحد أقصى 500 رد AI لكل متجر. نراجع الأسعار بعد أول 3 متاجر.',
+    integrity: 'واتساب/Meta يُحاسب بشكل منفصل، والأرقام تقديرية قبل التسويق والضرائب والتسجيل وأي دعم إضافي.',
+    unit: 'جنيه / شهر', surplusLabel: 'فائض تشغيلي تقديري', included: 'يشمل', replyLabel: 'الحد الشهري'
+  },
+  en: {
+    plans: [
+      { name: 'Starter', price: '999', replies: 'Up to 1,000 AI replies / month', surplus: '217', features: ['One connected WhatsApp number', 'Managed setup', 'Routine customer questions', 'Basic conversation history', 'Human handover'] },
+      { name: 'Growth', price: '1,999', replies: 'Up to 3,000 AI replies / month', surplus: '927', features: ['Everything in Starter', 'Larger knowledge base', 'Usage reporting', 'Higher support allowance'] },
+      { name: 'Pro', price: '3,999', replies: 'Up to 8,000 AI replies / month', surplus: '2,367', features: ['Everything in Growth', 'Advanced workflow controls', 'Detailed reporting', 'Priority support'] },
+    ],
+    note: 'Launch prices are hypotheses to test with customers, not validated market prices.',
+    trial: 'Founding customer trial', trialText: '14 days capped at 500 AI replies per shop. Reassess pricing after the first 3 shops.',
+    integrity: 'WhatsApp/Meta charges are separate. Estimates exclude marketing, tax, registration, and support beyond the allowance.',
+    unit: 'EGP / month', surplusLabel: 'Estimated operating surplus', included: 'Includes', replyLabel: 'Monthly limit'
+  }
+} as const
+
 export function getDictionary(language: Language) { return copy[language] }
