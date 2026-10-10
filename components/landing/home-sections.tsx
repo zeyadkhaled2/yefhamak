@@ -15,7 +15,7 @@ type LanguageControls = {
 }
 
 const whatsappUrl = 'https://wa.me/201030447979'
-const navTargets = ['#features', '#how', '#pricing', '#faq']
+const navTargets = ['#features', '#how', '#pricing', '#faq', '/contact']
 
 export function SiteNav({ lang, setLang, isAr, t, menuOpen, setMenuOpen }: LanguageControls & { menuOpen: boolean; setMenuOpen: Dispatch<SetStateAction<boolean>> }) {
   return <nav className="sticky top-0 z-20 border-b border-[#142B3B]/10 bg-[#F7F5EF]/90 backdrop-blur-xl">
