@@ -33,7 +33,6 @@ export const businessPlan = {
       { name: 'Pro', price: '3,999', replies: 'Up to 8,000 AI replies / month', surplus: '2,367', features: ['Everything in Growth', 'Advanced workflow controls', 'Detailed reporting', 'Priority support'] },
     ],
     note: 'Launch prices are hypotheses to test with customers, not validated market prices.',
-    trial: 'Founding customer trial', trialText: '14 days capped at 500 AI replies per shop. Reassess pricing after the first 3 shops.',
     integrity: 'WhatsApp/Meta charges are separate. Estimates exclude marketing, tax, registration, and support beyond the allowance.',
     unit: 'EGP / month', surplusLabel: 'Estimated operating surplus', included: 'Includes', replyLabel: 'Monthly limit'
   }
