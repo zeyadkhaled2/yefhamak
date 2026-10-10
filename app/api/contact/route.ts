@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
     // Temporary debug line: remove after the form works
     const raw = await response.text()
-    console.error('Sheets webhook:', response.status, raw.slice(0, 300))
+    console.error('Sheets webhook:', response.status, raw.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 300))
     const result = (() => { try { return JSON.parse(raw) } catch { return { ok: false } } })()
 
     return result.ok === true
