@@ -53,12 +53,18 @@ export async function POST(request: Request) {
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ ...fields, secret }),
       redirect: 'follow',
-      signal: AbortSignal.timeout(15000), // give up after 15 seconds
+      signal: AbortSignal.timeout(15000),
     })
 
-    const result = await response.json().catch(() => ({ ok: false }))
+    // Temporary debug line: remove after the form works
+    const raw = await response.text()
+    console.error('Sheets webhook:', response.status, raw.slice(0, 300))
+    const result = (() => { try { return JSON.parse(raw) } catch { return { ok: false } } })()
+
     return result.ok === true
       ? NextResponse.json({ ok: true })
       : NextResponse.json({ ok: false }, { status: 502 })
   } catch {
-    return
+    return NextResponse.json({ ok: false, error: 'Unexpected server error' }, { status: 500 })
+  }
+}
