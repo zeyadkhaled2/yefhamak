@@ -22,10 +22,7 @@ export async function POST(request: Request) {
       phone: normalizeDigits(text(body?.phone)),
       company: text(body?.company),
       message: text(body?.message),
-      website: text(body?.website),
     }
-
-    if (fields.website) return NextResponse.json({ ok: true }) // honeypot
 
     const digits = fields.phone.match(/\d/g)?.length ?? 0
 
