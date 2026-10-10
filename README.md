@@ -22,7 +22,8 @@ The official Yefhamak logo is stored at `public/yefhamak-logo.png` and is reused
 
 **مفيش سؤال هيبات**
 
-Official WhatsApp: [+20 103 044 7979](https://wa.me/201030447979)
+Official WhatsApp: [+20 103 044 7979](https://wa.me/201030447979)  
+Account email: [yefhamak.@gmail.com](mailto:yefhamak.@gmail.com)
 
 ## Tech stack
 
