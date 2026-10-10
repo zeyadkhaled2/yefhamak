@@ -23,7 +23,7 @@ export const businessPlan = {
       { name: 'المحترف', price: '3,999', replies: 'حتى 8,000 رد AI شهريًا', surplus: '2,367', features: ['كل مميزات النمو', 'تحكم متقدم في سير العمل', 'تقارير أكثر تفصيلًا', 'دعم بأولوية'] },
     ],
     note: 'أسعار الإطلاق لا تزال قيد الاختبار وليست سعرًا سوقيًا مُثبتًا.',
-    integrity: 'رسوم واتساب وMeta منفصلة. الأرقام تقديرية ولا تشمل التسويق أو الضرائب أو التسجيل أو الدعم الإضافي.',
+    integrity: 'رسوم واتساب وMeta منفصلة. الأرقام تقديرية ولا تشمل التسويق أو الضرائب أو التسجيل أو الدعم الإضافي.',
     unit: 'جنيه / شهر', surplusLabel: 'فائض تشغيلي تقديري', included: 'يشمل', replyLabel: 'الحد الشهري'
   },
   en: {
@@ -33,7 +33,7 @@ export const businessPlan = {
       { name: 'Pro', price: '3,999', replies: 'Up to 8,000 AI replies / month', surplus: '2,367', features: ['Everything in Growth', 'Advanced workflow controls', 'Detailed reporting', 'Priority support'] },
     ],
     note: 'Launch prices are hypotheses to test with customers, not validated market prices.',
-    integrity: 'WhatsApp/Meta charges are separate. Estimates exclude marketing, tax, registration, and support beyond the allowance.',
+    integrity: 'WhatsApp/Meta charges are separate. Estimates exclude marketing, tax, registration, and support beyond the allowance.',
     unit: 'EGP / month', surplusLabel: 'Estimated operating surplus', included: 'Includes', replyLabel: 'Monthly limit'
   }
 } as const
