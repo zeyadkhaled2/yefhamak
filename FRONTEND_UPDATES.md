@@ -9,3 +9,5 @@
 - Dependency maintenance: pinned Next.js to patched 16.4.3 after the existing 16.4.0 triggered a security advisory. Final production build and all 7 mock-flow tests pass; npm install audit reports 0 vulnerabilities.
 
 - Brand alignment: shared Cairo font and landing palette tokens (cream #F7F5EF, teal #19A7A0, navy #142B3B, yellow #FFBE37); replaced demo-only sage colors, reused the existing logo. Mock behavior unchanged.
+
+- Step 2: explicit Mock/Live switch; split MockWorkspace and LiveWorkspace; demo-api.ts talks directly to local backend. In-memory access key; origin-scoped conversation/pending IDs in sessionStorage; safe same-ID request checks, no automatic retries. Live DB history, paginated/searchable/filterable real orders and multi-item read-only details. Build + 13 tests pass; backend migration and API docs are in the backend checkout. Setup/evidence: docs/backend-integration.md. No model calls used for verification.

@@ -2,11 +2,9 @@
 
 Run `npm ci`, then `npm run dev`. Open [Demo chat](http://localhost:3000/demo) or [Seller orders](http://localhost:3000/seller/orders).
 
-These screens are explicitly **mock mode**: scripted Arabic replies, simulated reservations, and browser-local orders. No OpenRouter requests or backend database changes occur. Follow the chat suggestion buttons, use sample delivery details, and confirm an order to see it in the seller view. Use sample information only.
+Choose **Mock · no API** for the scripted browser-local demo, or **Live · your backend** to connect to your local Python backend. Live supports persistent chat history and real read-only seller orders. Connection/history/orders do not call the model; sending requires the backend's explicit live flag. Keys stay in tab memory, not public build variables or browser storage. Use sample customer information only.
 
-Orders persist in localStorage and sync between tabs on the same origin. Chat history resets on navigation/reload. Seller status actions and reset affect local demo data only. The UI currently covers size M hoodie scenarios, not the full backend catalog or a real inventory lifecycle.
-
-Verify with `npm run build` and `node --experimental-strip-types --test tests/demo-store.test.mjs` (tests require Node 22.6+; verified on Node 24). See `FRONTEND_UPDATES.md` for the short handoff and remaining integration work.
+See [local connection, key handling, retries, and verification](docs/backend-integration.md). Verify with `npm run build` and `node --experimental-strip-types --test tests/demo-store.test.mjs tests/demo-api.test.mjs` (verified on Node 24).
 
 ---
 

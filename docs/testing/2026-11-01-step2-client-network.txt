@@ -1,0 +1,5 @@
+(node:6476) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///D:/yefhamak/lib/demo-api.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\D:\yefhamak\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS: actual frontend client connected to the real local backend and read paginated orders; live sending disabled; no model calls
