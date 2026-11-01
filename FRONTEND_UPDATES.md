@@ -7,3 +7,5 @@
 - Checks: production build + TypeScript; `node --experimental-strip-types --test tests/demo-store.test.mjs`; browser walkthrough of order creation, seller details/review/search, mobile layouts. See backend `UPDATES.md` for prior work.
 - Preserved existing untracked `app/seed.py` and environment files. Frontend has its own Git repository; changes are not pushed automatically.
 - Dependency maintenance: pinned Next.js to patched 16.4.3 after the existing 16.4.0 triggered a security advisory. Final production build and all 7 mock-flow tests pass; npm install audit reports 0 vulnerabilities.
+
+- Brand alignment: shared Cairo font and landing palette tokens (cream #F7F5EF, teal #19A7A0, navy #142B3B, yellow #FFBE37); replaced demo-only sage colors, reused the existing logo. Mock behavior unchanged.

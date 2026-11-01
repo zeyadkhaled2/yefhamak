@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
-:root { font-family: 'Cairo', 'Inter', sans-serif; }
+:root {
+  --brand-font: 'Cairo', 'Inter', sans-serif;
+  --brand-ink: #142B3B;
+  --brand-teal: #19A7A0;
+  --brand-teal-hover: #148C86;
+  --brand-cream: #F7F5EF;
+  --brand-yellow: #FFBE37;
+  font-family: var(--brand-font);
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #F7F5EF; }

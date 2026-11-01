@@ -69,7 +69,7 @@ export default function DemoWorkspace({ view }: { view: 'chat' | 'orders' }) {
 
   return <div className="demo-app" dir="ltr" lang="en">
     <aside className="demo-sidebar">
-      <Link href="/" className="demo-brand"><span className="brand-symbol">ي</span><span>yefhamak<span className="brand-caption">THE DEMO WORKSPACE</span></span></Link>
+      <Link href="/" className="demo-brand"><img src="/yefhamak-logo.png" alt="" className="brand-logo" /><span>yefhamak<span className="brand-caption">THE DEMO WORKSPACE</span></span></Link>
       <div className="workspace-label">WORKSPACE</div>
       <nav aria-label="Demo navigation">
         <Link href="/demo" className={view === 'chat' ? 'nav-item active' : 'nav-item'}><MessageCircle size={19} /> Demo chat <ChevronRight size={15} /></Link>
