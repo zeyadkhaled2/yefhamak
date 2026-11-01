@@ -1,3 +1,15 @@
+## Local MVP demo (2026-11-01)
+
+Run `npm ci`, then `npm run dev`. Open [Demo chat](http://localhost:3000/demo) or [Seller orders](http://localhost:3000/seller/orders).
+
+These screens are explicitly **mock mode**: scripted Arabic replies, simulated reservations, and browser-local orders. No OpenRouter requests or backend database changes occur. Follow the chat suggestion buttons, use sample delivery details, and confirm an order to see it in the seller view. Use sample information only.
+
+Orders persist in localStorage and sync between tabs on the same origin. Chat history resets on navigation/reload. Seller status actions and reset affect local demo data only. The UI currently covers size M hoodie scenarios, not the full backend catalog or a real inventory lifecycle.
+
+Verify with `npm run build` and `node --experimental-strip-types --test tests/demo-store.test.mjs` (tests require Node 22.6+; verified on Node 24). See `FRONTEND_UPDATES.md` for the short handoff and remaining integration work.
+
+---
+
 # Yefhamak | يفهمك
 
 > **مفيش سؤال هيبات** — No customer question goes unanswered.
