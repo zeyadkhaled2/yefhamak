@@ -11,3 +11,5 @@
 - Brand alignment: shared Cairo font and landing palette tokens (cream #F7F5EF, teal #19A7A0, navy #142B3B, yellow #FFBE37); replaced demo-only sage colors, reused the existing logo. Mock behavior unchanged.
 
 - Step 2: explicit Mock/Live switch; split MockWorkspace and LiveWorkspace; demo-api.ts talks directly to local backend. In-memory access key; origin-scoped conversation/pending IDs in sessionStorage; safe same-ID request checks, no automatic retries. Live DB history, paginated/searchable/filterable real orders and multi-item read-only details. Build + 13 tests pass; backend migration and API docs are in the backend checkout. Setup/evidence: docs/backend-integration.md. No model calls used for verification.
+
+- CI step 1: GitHub Actions on push/PR/manual dispatch; Node 24, npm ci, npm test (13 offline tests), production build. Pinned/read-only actions, timeouts, cancelled superseded runs, log artifacts retained 14 days. No backend/model/webhook calls. Vercel deployment remains independent of test results. See docs/ci.md.

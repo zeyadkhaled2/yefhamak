@@ -1,4 +1,8 @@
+[![Frontend CI](https://github.com/zeyadkhaled2/yefhamak/actions/workflows/ci.yml/badge.svg)](https://github.com/zeyadkhaled2/yefhamak/actions/workflows/ci.yml)
+
 ## Local MVP demo (2026-11-01)
+
+Pushes and pull requests run `npm test` and a production build automatically. See [CI checks and logs](docs/ci.md).
 
 Run `npm ci`, then `npm run dev`. Open [Demo chat](http://localhost:3000/demo) or [Seller orders](http://localhost:3000/seller/orders).
 

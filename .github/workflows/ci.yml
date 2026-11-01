@@ -1,0 +1,52 @@
+name: Frontend CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    name: Tests and production build (Node 24)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      # Never use real service credentials for CI.
+      SHEETS_WEBHOOK_URL: ""
+      SHEETS_WEBHOOK_SECRET: ""
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Run offline frontend tests
+        shell: bash
+        run: |
+          mkdir -p test-results
+          npm test 2>&1 | tee test-results/frontend-tests.txt
+      - name: Build production app
+        shell: bash
+        run: npm run build 2>&1 | tee test-results/frontend-build.txt
+      - name: Save test and build output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: frontend-check-results
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 14
