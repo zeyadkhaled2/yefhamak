@@ -6,7 +6,7 @@ Pushes and pull requests run `npm test` and a production build automatically. Se
 
 Run `npm ci`, then `npm run dev`. Open [Demo chat](http://localhost:3000/demo) or [Seller orders](http://localhost:3000/seller/orders).
 
-Choose **Mock · no API** for the scripted browser-local demo, or **Live · your backend** to connect to your local Python backend. Live supports persistent chat history and real read-only seller orders. Connection/history/orders do not call the model; sending requires the backend's explicit live flag. Keys stay in tab memory, not public build variables or browser storage. Use sample customer information only.
+Choose **Mock · no API** for the scripted browser-local demo, or **Live · your backend** to connect to your local Python backend. Live supports persistent chat history and real seller orders with confirm/cancel actions. Connection/history/orders do not call the model; sending requires the backend's explicit live flag. Keys stay in tab memory, not public build variables or browser storage. Use sample customer information only.
 
 See [local connection, key handling, retries, and verification](docs/backend-integration.md). Verify with `npm run build` and `node --experimental-strip-types --test tests/demo-store.test.mjs tests/demo-api.test.mjs` (verified on Node 24).
 

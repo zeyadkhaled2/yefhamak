@@ -19,6 +19,9 @@ export function normalizeBaseUrl(input: string) {
   return url.origin
 }
 const explanations: Record<string, string> = {
+  order_not_found: 'This order is unavailable in this store. Refresh the order list.',
+  invalid_order_transition: 'This order cannot be confirmed after cancellation. Its latest status has been refreshed.',
+  order_inventory_conflict: 'The order and its inventory holds do not match. No changes were saved. Inspect the backend data before retrying.',
   invalid_demo_api_key: 'The demo API key was rejected. Check the key in your backend .env.',
   demo_api_key_not_configured: 'Set DEMO_API_KEY in the backend .env and restart the backend.',
   demo_store_not_seeded: 'The Demo Store is missing. See the backend setup docs before seeding; seeding deletes demo data.',
@@ -70,6 +73,7 @@ export const api = {
     if (query.trim()) params.set('q', query.trim())
     return request<OrderPage>(`/api/demo/orders?${params}`, { signal })
   },
+  reviewOrder: (id: string, action: 'confirm' | 'cancel') => request<ApiOrder>(`/api/demo/orders/${encodeURIComponent(id)}/${action}`, { method: 'POST' }),
   order: (id: string, signal?: AbortSignal) => request<ApiOrderDetail>(`/api/demo/orders/${encodeURIComponent(id)}`, { signal }),
 }
 

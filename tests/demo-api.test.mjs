@@ -66,3 +66,25 @@ test('backend errors are actionable and never retried automatically', async () =
     assert.equal(calls, 1)
   } finally { globalThis.fetch = previous; clearConnection() }
 })
+
+test('order review posts an authenticated action and surfaces conflicts without retrying', async () => {
+  const previous = globalThis.fetch
+  const calls = []
+  globalThis.fetch = async (url, init) => {
+    calls.push({url, init})
+    return calls.length < 3 ? new Response(JSON.stringify({id:'order', status:calls.length === 1 ? 'CONFIRMED' : 'CANCELLED'}))
+      : new Response(JSON.stringify({detail:'invalid_order_transition'}), {status:409})
+  }
+  try {
+    setConnection({baseUrl:'http://localhost:8000', apiKey:'offline-key'})
+    assert.equal((await api.reviewOrder('order', 'confirm')).status, 'CONFIRMED')
+    assert.equal((await api.reviewOrder('order', 'cancel')).status, 'CANCELLED')
+    await assert.rejects(api.reviewOrder('order', 'confirm'), error => error instanceof ApiError && error.code === 'invalid_order_transition')
+    assert.equal(calls.length, 3)
+    assert.equal(calls[0].url, 'http://localhost:8000/api/demo/orders/order/confirm')
+    assert.equal(calls[1].url, 'http://localhost:8000/api/demo/orders/order/cancel')
+    assert.equal(calls[0].init.method, 'POST')
+    assert.equal(calls[0].init.headers.Authorization, 'Bearer offline-key')
+    assert.equal(calls[0].init.credentials, 'omit')
+  } finally { globalThis.fetch = previous; clearConnection() }
+})
