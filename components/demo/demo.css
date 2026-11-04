@@ -1154,3 +1154,21 @@
 .live-pagination>span { margin-right:auto; }
 .live-id { overflow-wrap:anywhere; }
 @media(max-width:700px) { .workspace-mode-bar { padding:12px 16px; gap:10px; } .workspace-mode-bar>span { width:100%; margin-left:0; } .live-connection { padding:16px; } .live-connection label { width:100%; flex:auto; min-width:0; } .live-connection .button { width:100%; } }
+
+/* Keep the live conversation readable on screen and in recordings. */
+.demo-app[data-live-busy] .message-bubble,
+.demo-app[data-live-busy] .chat-composer textarea {
+  font-family: var(--brand-font);
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+  line-height: 1.7;
+}
+.demo-app[data-live-busy] .message-bubble {
+  padding: 12px 16px;
+}
+.demo-app[data-live-busy] .message-meta,
+.demo-app[data-live-busy] .composer-footnote {
+  font-size: 12px;
+}
+.demo-app[data-live-busy] .chat-header h2 {
+  font-size: 1rem;
+}
