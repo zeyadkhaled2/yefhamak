@@ -83,16 +83,12 @@
   margin-bottom:7px;
   font-size:13px;
   font-weight:600;
-  color:rgba(var(--demo-ink-rgb),.6)!important;
-}
-.nav-item.active {
-  background:rgba(25,167,160,.08);
-  color:var(--teal)!important;
+  color:rgba(var(--demo-ink-rgb),.8);
 }
 .nav-item:hover {
   background:rgba(25,167,160,.08);
 }
-.nav-item>svg:last-child,.nav-count {
+.nav-item>svg:last-child:not(:first-child),.nav-count {
   margin-left:auto;
 }
 .nav-count {
