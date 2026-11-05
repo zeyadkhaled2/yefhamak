@@ -1215,3 +1215,8 @@
 .demo-workspace[data-theme="dark"] :is(.status-pill.cancelled,.demo-error) { background: #422a30; color: #ffbdbf; }
 .demo-workspace[data-theme="dark"] :is(.button.primary,.send-button) { color: #102c2c; }
 .demo-workspace .orders-panel + .order-stats { margin-top: 16px; }
+
+.demo-workspace .chat-composer textarea:placeholder-shown {
+  direction: rtl;
+  text-align: right;
+}
