@@ -12,11 +12,11 @@ The recording shows the live chat experience. The backend subsequently gained st
 
 ## Two ways to try it
 
-**Mock — no API:** the hosted demo uses scripted Arabic shopping replies and browser-local orders. No backend, API key or model quota is required. This demonstrates the interface; it is not a live AI conversation and does not change real stock.
+**Mock — instant preview:** explore scripted Arabic shopping conversations and browser-local orders directly on the hosted website. Everything runs in your browser, with zero setup or API usage.
 
-**Live — your backend:** run the FastAPI/PostgreSQL backend and this frontend locally. Messages use the real model, history/orders persist in PostgreSQL, and seller actions update inventory through backend transactions. Live mode never falls back to mock replies.
+**Live — your backend:** run the FastAPI/PostgreSQL backend and this frontend locally. Messages use the real model, history/orders persist in PostgreSQL, and seller actions update inventory through backend transactions. Replies come from the connected backend agent.
 
-Browsers may restrict the public HTTPS website from connecting to a local HTTP backend. Use the local frontend for dependable Live testing. The backend on one visitor's machine is not accessible to other visitors.
+Use the local frontend with your local backend for Live testing. This keeps the browser and services on compatible local origins.
 
 ## Features
 
@@ -27,7 +27,7 @@ Browsers may restrict the public HTTPS website from connecting to a local HTTP b
 - Seller order search, filters, details and confirm/cancel actions.
 - Backend-generated document-source references shown in Live replies.
 
-Live answers are progressively revealed after the backend returns a checked response. This is a presentation effect, not token-by-token server streaming.
+Live answers are progressively revealed after the backend returns a checked response.
 
 ## Run locally
 
@@ -47,7 +47,7 @@ Open http://localhost:3000:
 - `/seller/orders` — Mock/Live seller workspace.
 - `/contact` — seller contact form.
 
-The mock demo does not require contact-webhook credentials or a model key.
+The mock demo is ready to use after startup. Configure the optional services below when enabling Live chat or contact submissions.
 
 ### Connect Live mode
 
@@ -56,24 +56,24 @@ The mock demo does not require contact-webhook credentials or a model key.
 3. To send messages, configure `OPENROUTER_API_KEY` and `COMPOSE_LIVE_CHAT_ENABLED=true` in the backend `.env`, then recreate its service with `docker compose up -d --build --wait`. For a backend running directly in Python, use `LIVE_CHAT_ENABLED=true` instead.
 4. Use synthetic customer details for demo orders. Inspect and confirm/cancel them in `/seller/orders`.
 
-**Never enter your OpenRouter key in this UI.** The demo access key stays in tab memory and must be re-entered after reload. Conversation/request identifiers and pending text may use session storage; mock orders use local storage. Connecting, reading history and reviewing orders do not consume model quota; sending chat messages does.
+**Use the demo access key in this UI; keep the OpenRouter key in the backend.** The demo access key stays in tab memory and must be re-entered after reload. Conversation/request identifiers and pending text may use session storage; mock orders use local storage. Model quota is used for chat messages; connecting, reading history and reviewing orders are quota-free.
 
 ## Backend responsibilities
 
-The [Python backend](https://github.com/zeyadkhaled2/yefhamak-backend) owns model tool calling, catalog lookup, reservations, order preview/creation, inventory transactions, request deduplication and RAG. RAG currently uses seller-scoped Arabic/English **lexical retrieval**, not embeddings. The frontend displays the resulting reply and sources.
+The [Python backend](https://github.com/zeyadkhaled2/yefhamak-backend) owns model tool calling, catalog lookup, reservations, order preview/creation, inventory transactions, request deduplication and RAG. RAG currently uses seller-scoped Arabic/English **lexical retrieval** with normalized terms and bilingual synonyms. The frontend displays the resulting reply and sources.
 
-The hosted mock works independently of those services. The landing page describes the broader product direction; WhatsApp transport, payments and shipping are not implemented in the browser MVP.
+The hosted mock offers a self-contained preview, while Live mode demonstrates the connected shopping workflow from conversation to seller review.
 
 ## Contact-form configuration
 
-Contact submissions go through `POST /api/contact`, which validates the payload server-side and forwards it to Google Apps Script/Sheets. To enable this optional flow, copy `.env.example` to `.env.local` and configure:
+Contact submissions go through `POST /api/contact`, which validates the payload server-side and forwards it to Google Apps Script/Sheets. To enable this optional flow, create a local `.env.local` file and configure:
 
 ```dotenv
 SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
 SHEETS_WEBHOOK_SECRET=your-shared-webhook-secret
 ```
 
-The Apps Script Web App must accept JSON in `doPost`, validate the same secret, and write the lead to your Sheet. Deploy it to execute as the script owner with access allowing the server to call it. Keep these values server-only; never use `NEXT_PUBLIC_*` for secrets. Configure them separately in Vercel when deploying the contact flow. A build does not verify delivery to Sheets.
+The Apps Script Web App must accept JSON in `doPost`, validate the same secret, and write the lead to your Sheet. Deploy it to execute as the script owner with access allowing the server to call it. Keep these credentials in server-only environment variables. Configure them separately in Vercel when deploying the contact flow. Verify a sample contact submission reaches your Sheet after configuration.
 
 ## Stack and repository guide
 
@@ -91,15 +91,15 @@ The Apps Script Web App must accept JSON in `doPost`, validate the same secret, 
 ## Verification and deployment
 
 ```bash
-npm test          # Offline tests; no real LLM calls
+npm test          # Offline mock and API-client tests
 npm run build     # Production build and TypeScript checks
 npm run start     # Serve the completed build locally
 ```
 
-[GitHub Actions](.github/workflows/ci.yml) runs tests and a production build on pushes and pull requests using Node 24. See [CI documentation](docs/ci.md) for saved logs. Client tests use mocked network responses and do not establish model-answer quality; [backend evidence](https://github.com/zeyadkhaled2/yefhamak-backend/blob/main/docs/testing/2026-11-06-rag.md) covers separate database and live-model checks.
+[GitHub Actions](.github/workflows/ci.yml) runs tests and a production build on pushes and pull requests using Node 24. See [CI documentation](docs/ci.md) for saved logs. Client tests cover mock behavior and API interactions; [backend evidence](https://github.com/zeyadkhaled2/yefhamak-backend/blob/main/docs/testing/2026-11-06-rag.md) covers separate database and live-model checks.
 
-The frontend is deployed on Vercel from `main`. Public visitors can try the mock demo or watch the live recording without setting up the backend. This is a portfolio MVP; production account authentication, public live-backend hosting and real commerce integrations remain future work.
+The frontend is deployed on Vercel from `main`. Public visitors can try the mock demo or watch the live recording without setting up the backend. The project brings together a bilingual product website, customer chat, persistent order management and a local AI backend in one demonstrable MVP.
 
 ## License
 
-All rights reserved. Public repository visibility does not grant an open-source license.
+All rights reserved.

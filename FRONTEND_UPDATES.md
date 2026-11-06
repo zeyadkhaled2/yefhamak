@@ -1,3 +1,6 @@
+## Repository presentation cleanup
+- Focused README on implemented features and user workflows; removed tracked environment template and updated local contact configuration instructions.
+
 ## Demo documentation refresh
 - Replaced outdated marketing-only README with current Mock/Live features, YouTube demo, backend links, setup, contact configuration and honest MVP limitations. No app code changes.
 
