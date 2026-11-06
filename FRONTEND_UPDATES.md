@@ -1,3 +1,6 @@
+## Demo documentation refresh
+- Replaced outdated marketing-only README with current Mock/Live features, YouTube demo, backend links, setup, contact configuration and honest MVP limitations. No app code changes.
+
 # 2026-11-03 — Seller order actions
 - Live details now confirm pending orders and cancel pending/confirmed orders with explicit cancellation review; cancelled orders cannot reopen.
 - Authenticated POST actions use backend inventory transactions; busy controls prevent overlapping clicks; failures try to refresh the real status without automatic action retries. Same-action retries are backend-idempotent.
